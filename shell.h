@@ -12,6 +12,10 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+#define INITIAL_BUFFER_SIZE 64
+#define GROWTH_FACTOR 2
+
+
 extern char **environ;
 
 /**
@@ -200,5 +204,8 @@ void handle_double_mark(struct memory *m, int i);
 void handle_exit(struct memory *m);
 /* handles the environments */
 void handle_env(struct memory *m);
+
+
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 #endif
 

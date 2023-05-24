@@ -122,7 +122,7 @@ int main(int argc, char **argv, char **e)
 	if (isatty(STDIN_FILENO) && argc == 1)
 		write_charV(1, "$ ", 2);
 
-	while (getline(&m.command, &num, stdin) != EOF)
+	while (_getline(&m.command, &num, stdin) != EOF)
 	{
 		len = _strlen(m.command);
 		m.command_number++;
