@@ -54,16 +54,15 @@ char **arr_of_tokens(char *command, char *del)
 	_strcpy(command_cpy, command);
 
 	arr_str = malloc(sizeof(char *) * (count_of_tok(command, del) + 1));
-	token = strtok(command_cpy, del);
 
+	token = strtok(command_cpy, del);
 	while (token)
 	{
-	temp = malloc(sizeof(char) * (_strlen(token) + 1));
-	_strcpy(temp, token);
-
-	arr_str[i] = temp;
-	token = strtok(NULL, del);
-	i++;
+		temp = malloc(sizeof(char) * (_strlen(token) + 1));
+		_strcpy(temp, token);
+		arr_str[i] = temp;
+		token = strtok(NULL, del);
+		i++;
 	}
 	arr_str[i] = NULL;
 	free(command_cpy);

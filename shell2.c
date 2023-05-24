@@ -11,36 +11,35 @@ int execute_commandV(memory *m)
 	pid_t child_id = -1;
 	int command_status = 0;
 
-	m->agv = arr_of_tokens(m->command, " ");
+	m->agv = arr_of_tokens(m->command, "\t\r\n\a");
 
 	handle_args(m);
 	command_status = check_command_exit(m->agv);
 
 	if (command_status == -1)
 	{
+		fprintf(stderr, "%s: ", m->program_args[0]);
+		fprintf(stderr, "%d: %s: ", m->command_number, m->agv[0]);
+		fprintf(stderr, "not found\n");
 
-	fprintf(stderr, "%s: ", m->program_args[0]);
-	fprintf(stderr, "%d: %s: ", m->command_number, m->agv[0]);
-	fprintf(stderr, "not found\n");
-
-	free_array_of_strings(m->agv);
-	return (-1);
+		free_array_of_strings(m->agv);
+		return (-1);
 	}
 	if (command_status != 3)
 	{
-	child_id = fork();
-	if (child_id == 0)
-	{
-	execve(m->agv[0], m->agv, NULL);
+		child_id = fork();
+		if (child_id == 0)
+		{
+			execve(m->agv[0], m->agv, NULL);
+		}
+		else
+		{
+			wait(NULL);
+		}
 	}
 	else
 	{
-	wait(NULL);
-	}
-	}
-	else
-	{
-	handle_built_in(m);
+		handle_built_in(m);
 	}
 
 	free_array_of_strings(m->agv);
