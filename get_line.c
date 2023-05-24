@@ -10,6 +10,10 @@
 
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
+	char *buffer, *new_buffer;
+	size_t buffer_size, new_size;
+	ssize_t length;
+	int c;
 	if (lineptr == NULL || n == NULL || stream == NULL)
 		return (-1);
 
@@ -19,17 +23,17 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		*n = INITIAL_BUFFER_SIZE;
 	}
 
-	char *buffer = *lineptr;
-	size_t buffer_size = *n;
-	ssize_t length = 0;
-	int c;
+
+	buffer = *lineptr;
+	buffer_size = *n;
+	length = 0;
 
 	while ((c = fgetc(stream)) != EOF)
 	{
-		if (length >= buffer_size - 1)
+		if (length >= (ssize_t) buffer_size - 1)
 		{
-			size_t new_size = buffer_size * GROWTH_FACTOR;
-			char *new_buffer = (char *)realloc(buffer, new_size * sizeof(char));
+			new_size = buffer_size * GROWTH_FACTOR;
+			new_buffer = (char *)realloc(buffer, new_size * sizeof(char));
 
 			if (new_buffer == NULL)
 				return (-1);
