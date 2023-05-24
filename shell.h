@@ -45,6 +45,7 @@ typedef struct DynamicString
  *
  * @command: a string representing the name of the command
  * @agv: a string pointer represents the arguments
+ * @arg_number: number of arguments
  * @env: a string pointer represents the arguments
  * @command_number: an integer
  * @program_args: a string for arrguments
@@ -59,6 +60,7 @@ typedef struct memory
 {
 	char *command;
 	char **agv;
+	int arg_number;
 	int command_number;
 	int current_status_code;
 	char **program_args;

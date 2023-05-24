@@ -8,6 +8,11 @@
 
 void handle_exit(struct memory *m)
 {
+
+	if(m->agv[1])
+	{
+
+	}
 	free_array_of_strings(m->agv);
 	free(m->command);
 	exit(m->last_exit_code);

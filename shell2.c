@@ -68,12 +68,12 @@ int handle_built_in(memory *m)
 	};
 	while (h[i].command)
 	{
-	if (_strcmp(h[i].command, m->command) == 0)
-	{
-	h[i].handler(m);
-	return (1);
-	}
-	i++;
+		if (_strcmp(h[i].command, m->agv[0]) == 0)
+		{
+			h[i].handler(m);
+			return (1);
+		}
+		i++;
 	}
 
 	return (0);
