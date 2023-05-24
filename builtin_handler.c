@@ -10,7 +10,7 @@ void handle_exit(struct memory *m)
 {
 	free_array_of_strings(m->agv);
 	free(m->command);
-	exit(1);
+	exit(0);
 }
 
 /**
