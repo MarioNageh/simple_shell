@@ -14,50 +14,38 @@ int execute_commandV(memory *m)
 	m->agv = arr_of_tokens(m->command, " \t\r\n\a");
 	if (m->agv == NULL)
 		return (0);
-
-	handle_args(m);
-	command_status = check_command_exit(m->agv);
+	handle_args(m), command_status = check_command_exit(m->agv);
 	if (command_status == -1)
 	{
 		fprintf(stderr, "%s: ", m->program_args[0]);
 		fprintf(stderr, "%d: %s: ", m->command_number, m->agv[0]);
-		fprintf(stderr, "not found\n");
-		free_array_of_strings(m->agv);
-		m->current_status_code = 127;
-		m->last_exit_code = 127;
-		free(m->command);
-		exit(127);
+		fprintf(stderr, "not found\n"), free_array_of_strings(m->agv);
+		m->last_exit_code = 127, free(m->command), exit(127);
 		return (-1);
-
 	}
 	if (command_status != 3)
 	{
 		child_id = fork();
 		if (child_id == 0)
 		{
-			execve(m->agv[0], m->agv, NULL);
-
+			execve(m->agv[0], m->agv, m->env);
 			if (errno == EACCES)
 				exit(126);
-
 			exit(1);
 		}
 		else
 		{
 			wait(&(m->current_status_code));
-			if (WIFEXITED(m->current_status_code)) {
+			if (WIFEXITED(m->current_status_code))
+			{
 				m->current_status_code = WEXITSTATUS(m->current_status_code);
 				m->last_exit_code = m->current_status_code;
 			}
 		}
 	}
 	else
-	{
 		handle_built_in(m);
-	}
-
 	free_array_of_strings(m->agv);
-
 	return (0);
 }
 

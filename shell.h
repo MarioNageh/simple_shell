@@ -41,6 +41,7 @@ typedef struct DynamicString
  *
  * @command: a string representing the name of the command
  * @agv: a string pointer represents the arguments
+ * @env: a string pointer represents the arguments
  * @command_number: an integer
  * @program_args: a string for arrguments
  * @program_arg_count: an integer that counts the args.
@@ -48,6 +49,7 @@ typedef struct DynamicString
  * @builtIn: a built_in struct
  * @current_process_id: represents the pid
  * @last_exit_code: represents the exit code.
+ * @current_status_code: represents the exit code.
  */
 typedef struct memory
 {
@@ -56,6 +58,7 @@ typedef struct memory
 	int command_number;
 	int current_status_code;
 	char **program_args;
+	char **env;
 	int program_arg_count;
 	struct built_in *builtIn;
 	pid_t current_process_id;

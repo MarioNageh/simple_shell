@@ -1,5 +1,5 @@
 #include "shell.h"
-
+/**/
 memory initializeMemory(void)
 {
 	memory mem;
@@ -106,7 +106,7 @@ int check_built_ins(char **args)
  * Return: always 0.
  */
 
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **e)
 {
 	size_t num = 0;
 	size_t len;
@@ -115,7 +115,7 @@ int main(int argc, char **argv)
 
 	m.program_args = argv;
 	m.program_arg_count = argc;
-
+	m.env = e;
 
 	signal(SIGINT, sigintHandler);
 
