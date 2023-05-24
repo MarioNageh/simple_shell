@@ -37,7 +37,7 @@ int count_of_tok(char *command, char *del)
  * arr_of_tokens - copies the tokens into array of strings.
  * @command: the string should be divided into tokens.
  * @del: the separator.
- * Return: the array of strings.
+ * Return: the array of strings..
  */
 
 char **arr_of_tokens(char *command, char *del)
