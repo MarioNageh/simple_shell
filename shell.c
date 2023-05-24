@@ -12,7 +12,6 @@ memory initializeMemory(void)
 	mem.builtIn = NULL;
 	mem.current_process_id = getppid();
 	mem.last_exit_code = 0;
-	mem.arg_number = 0;
 
 	return (mem);
 }

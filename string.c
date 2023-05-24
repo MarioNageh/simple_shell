@@ -1,5 +1,5 @@
 #include "shell.h"
-/**/
+
 /**
  * write_charV - returns a written string.
  * @fd: the number of lines.

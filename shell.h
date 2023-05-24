@@ -45,7 +45,6 @@ typedef struct DynamicString
  *
  * @command: a string representing the name of the command
  * @agv: a string pointer represents the arguments
- * @arg_number: number of arguments
  * @env: a string pointer represents the arguments
  * @command_number: an integer
  * @program_args: a string for arrguments
@@ -60,7 +59,6 @@ typedef struct memory
 {
 	char *command;
 	char **agv;
-	int arg_number;
 	int command_number;
 	int current_status_code;
 	char **program_args;
@@ -207,7 +205,10 @@ void handle_exit(struct memory *m);
 /* handles the environments */
 void handle_env(struct memory *m);
 
-
+/**_getline.c**/
+/* custom get_line function */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+/* copies the string into the buffer */
+size_t get(char *buf, char **lineptr, size_t *n, size_t buf_s, FILE *stream);
 #endif
 
