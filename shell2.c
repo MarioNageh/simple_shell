@@ -22,9 +22,13 @@ int execute_commandV(memory *m)
 		fprintf(stderr, "%s: ", m->program_args[0]);
 		fprintf(stderr, "%d: %s: ", m->command_number, m->agv[0]);
 		fprintf(stderr, "not found\n");
-
 		free_array_of_strings(m->agv);
+		m->current_status_code = 127;
+		m->last_exit_code = 127;
+		free(m->command);
+		exit(127);
 		return (-1);
+
 	}
 	if (command_status != 3)
 	{
@@ -32,10 +36,19 @@ int execute_commandV(memory *m)
 		if (child_id == 0)
 		{
 			execve(m->agv[0], m->agv, NULL);
+
+			if (errno == EACCES)
+				exit(126);
+
+			exit(1);
 		}
 		else
 		{
-			wait(NULL);
+			wait(&(m->current_status_code));
+			if (WIFEXITED(m->current_status_code)) {
+				m->current_status_code = WEXITSTATUS(m->current_status_code);
+				m->last_exit_code = m->current_status_code;
+			}
 		}
 	}
 	else

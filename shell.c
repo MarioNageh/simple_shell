@@ -7,6 +7,7 @@ memory initializeMemory(void)
 	mem.command = NULL;
 	mem.agv = NULL;
 	mem.command_number = 0;
+	mem.current_status_code = 0;
 	mem.program_args = NULL;
 	mem.builtIn = NULL;
 	mem.current_process_id = getppid();

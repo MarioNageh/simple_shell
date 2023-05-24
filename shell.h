@@ -1,6 +1,7 @@
 #ifndef SHELL
 #define SHELL
 
+#include <sys/errno.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,6 +54,7 @@ typedef struct memory
 	char *command;
 	char **agv;
 	int command_number;
+	int current_status_code;
 	char **program_args;
 	int program_arg_count;
 	struct built_in *builtIn;
