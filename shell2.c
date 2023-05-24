@@ -11,7 +11,7 @@ int execute_commandV(memory *m)
 	pid_t child_id = -1;
 	int command_status = 0;
 
-	m->agv = arr_of_tokens(m->command, "\t\r\n\a");
+	m->agv = arr_of_tokens(m->command, " \t\r\n\a");
 
 	handle_args(m);
 	command_status = check_command_exit(m->agv);
