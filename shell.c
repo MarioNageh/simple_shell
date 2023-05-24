@@ -1,5 +1,5 @@
 #include "shell.h"
-/**/
+
 memory initializeMemory(void)
 {
 	memory mem;
@@ -103,6 +103,7 @@ int check_built_ins(char **args)
  * main - checks the code.
  * @argc: the numbers of the argv.
  * @argv: the strings entered to the file.
+ * @e: controls the environment.
  * Return: always 0.
  */
 
@@ -139,4 +140,3 @@ int main(int argc, char **argv, char **e)
 	free(m.command);
 	return (0);
 }
-
