@@ -12,10 +12,11 @@ int execute_commandV(memory *m)
 	int command_status = 0;
 
 	m->agv = arr_of_tokens(m->command, " \t\r\n\a");
+	if (m->agv == NULL)
+		return (0);
 
 	handle_args(m);
 	command_status = check_command_exit(m->agv);
-
 	if (command_status == -1)
 	{
 		fprintf(stderr, "%s: ", m->program_args[0]);

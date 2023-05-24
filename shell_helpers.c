@@ -64,6 +64,13 @@ char **arr_of_tokens(char *command, char *del)
 		token = strtok(NULL, del);
 		i++;
 	}
+	if (i == 0)
+	{
+		free(arr_str);
+		free(command_cpy);
+		return (NULL);
+	}
+
 	arr_str[i] = NULL;
 	free(command_cpy);
 	return (arr_str);
