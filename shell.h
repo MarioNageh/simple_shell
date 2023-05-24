@@ -205,8 +205,10 @@ void handle_exit(struct memory *m);
 /* handles the environments */
 void handle_env(struct memory *m);
 
-
+/**_getline.c**/
+/* custom get_line function */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
-size_t get(char *buffer, char **lineptr, size_t *n, size_t buffer_size, FILE *stream);
+/* copies the string into the buffer */
+size_t get(char *buf, char **lineptr, size_t *n, size_t buf_s, FILE *stream);
 #endif
 
