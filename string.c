@@ -5,7 +5,7 @@
  * @fd: the number of lines.
  * @buffer: the string.
  * @size: the number of characters.
- * Return: a string.
+ * Return: a string..
  */
 
 int write_charV(int fd, const char *buffer, size_t size)

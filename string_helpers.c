@@ -90,3 +90,26 @@ char *_strncpy_size(char *destination, const char *source, size_t num)
 	return (destination);
 }
 
+int _atoi_with_error(char *s)
+{
+	int i = 0;
+	unsigned long int number = 0;
+
+	/* escape the +1000 +plus sign */
+	if (*s == '+')
+		s++;
+
+	for (i = 0;  s[i] != '\0'; i++)
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			number *= 10;
+			number += (s[i] - '0');
+			if (number > INT_MAX)
+				return (-1);
+		}
+		else
+			return (-1);
+	}
+	return (number);
+}

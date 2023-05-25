@@ -1,6 +1,7 @@
 #ifndef SHELL
 #define SHELL
 
+#include <limits.h>
 #include <sys/errno.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -161,8 +162,6 @@ int handle_args(memory *m);
 void sigintHandler(int signal);
 /* check_command_exit - checks the command */
 int check_command_exit(char **args);
-/* compares 2 strings together */
-int my_strcmp2(const char *s1, const char *s2);
 /* check_built_ins - checks the built_in commands */
 int check_built_ins(char **args);
 /* the main function */
@@ -179,6 +178,7 @@ char *_strcpy(char *m, char *n);
 int _strcmp(char *s, char *x);
 /* copies the string from one pointer to another */
 char *_strncpy_size(char *destination, const char *source, size_t num);
+int _atoi_with_error(char *s);
 
 
 /**Memory**/

@@ -86,7 +86,7 @@ int check_command_exit(char **args)
 
 int check_built_ins(char **args)
 {
-	char *build_in[] = {"exit", "env", "cd", NULL};
+	char *build_in[] = {"exit", "env", "cd","setenv","unsetenv", NULL};
 	int i = 0;
 
 	while (build_in[i] != NULL)
@@ -107,9 +107,13 @@ int check_built_ins(char **args)
  * Return: always 0.
  */
 
+
+
+
+
 int main(int argc, char **argv, char **e)
 {
-	size_t num = 0;
+		size_t num = 0;
 	size_t len;
 
 	memory m = initializeMemory();
@@ -140,3 +144,5 @@ int main(int argc, char **argv, char **e)
 	free(m.command);
 	return (0);
 }
+
+
