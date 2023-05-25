@@ -25,8 +25,10 @@ void handle_exit(struct memory *m)
 			m->last_exit_code = n;
 		}
 	}
+
+	free(m->current_command);
+	free_array_of_strings(m->commands);
 	free_array_of_strings(m->agv);
-	free(m->command);
 	exit(m->last_exit_code);
 }
 

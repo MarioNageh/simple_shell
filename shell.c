@@ -135,7 +135,7 @@ int main(int argc, char **argv, char **e)
 		if (len != 1 && m.command[0] != '#')
 		{
 			m.command[len - 1] = '\0';
-			execute_commandV(&m);
+			execute_multi_command(&m);
 		}
 		if (isatty(STDIN_FILENO) && argc == 1)
 			write_charV(1, "$ ", 2);

@@ -59,7 +59,9 @@ typedef struct DynamicString
 typedef struct memory
 {
 	char *command;
+	char *current_command;
 	char **agv;
+	char **commands;
 	int command_number;
 	int current_status_code;
 	char **program_args;
@@ -211,5 +213,7 @@ void handle_env(struct memory *m);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 /* copies the string into the buffer */
 size_t get(char *buf, char **lineptr, size_t *n, size_t buf_s, FILE *stream);
+
+int execute_multi_command(memory *m);
 #endif
 

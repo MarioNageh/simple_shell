@@ -20,7 +20,9 @@ int execute_commandV(memory *m)
 		fprintf(stderr, "%s: ", m->program_args[0]);
 		fprintf(stderr, "%d: %s: ", m->command_number, m->agv[0]);
 		fprintf(stderr, "not found\n"), free_array_of_strings(m->agv);
-		m->last_exit_code = 127, free(m->command);
+		free(m->current_command);
+		free_array_of_strings(m->commands);
+		m->last_exit_code = 127;
 		exit(127);
 		return (-1);
 	}
