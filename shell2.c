@@ -23,7 +23,6 @@ int execute_commandV(memory *m)
 		free(m->current_command);
 		free_array_of_strings(m->commands);
 		m->last_exit_code = 127;
-		exit(127);
 		return (-1);
 	}
 	if (command_status != 3)
