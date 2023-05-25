@@ -86,7 +86,7 @@ int check_command_exit(char **args)
 
 int check_built_ins(char **args)
 {
-	char *build_in[] = {"exit", "env", "cd","setenv","unsetenv", NULL};
+	char *build_in[] = {"exit", "env", "cd", "setenv", "unsetenv", NULL};
 	int i = 0;
 
 	while (build_in[i] != NULL)

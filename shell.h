@@ -178,6 +178,7 @@ char *_strcpy(char *m, char *n);
 int _strcmp(char *s, char *x);
 /* copies the string from one pointer to another */
 char *_strncpy_size(char *destination, const char *source, size_t num);
+/* finding the errors value */
 int _atoi_with_error(char *s);
 
 

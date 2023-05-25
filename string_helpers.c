@@ -90,6 +90,13 @@ char *_strncpy_size(char *destination, const char *source, size_t num)
 	return (destination);
 }
 
+/**
+ * _atoi_with_error - finding the errors value.
+ * @s: the string.
+ * Return: int or -1.
+ */
+
+
 int _atoi_with_error(char *s)
 {
 	int i = 0;
@@ -111,5 +118,7 @@ int _atoi_with_error(char *s)
 		else
 			return (-1);
 	}
+
 	return (number);
+
 }
