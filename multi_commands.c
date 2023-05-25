@@ -1,15 +1,24 @@
 #include "shell.h"
 
-/****/
-void removeLeadingSpaces(char *str) {
+/**
+ * removeLeadingSpaces - remove the leading space.
+ * @str: the string.
+ * Return: void.
+ */
+
+
+void removeLeadingSpaces(char *str)
+{
 	int i = 0;
 	int j = 0;
 
-	while (str[i] == ' ' || str[i] == '\t') {
+	while (str[i] == ' ' || str[i] == '\t')
+	{
 		i++;
 	}
 
-	while (str[i] != '\0') {
+	while (str[i] != '\0')
+	{
 		str[j] = str[i];
 		i++;
 		j++;
@@ -18,10 +27,18 @@ void removeLeadingSpaces(char *str) {
 	str[j] = '\0';
 }
 
+/**
+ * execute_multi_command - execute the multi commands.
+ * @m: a struct object.
+ * Return: int.
+ */
+
+
 int execute_multi_command(memory *m)
 {
 	char **commands = arr_of_tokens(m->command, ";");
 	char **s = commands;
+
 	m->commands = commands;
 	m->current_command = m->command;
 
@@ -42,4 +59,5 @@ int execute_multi_command(memory *m)
 	free_array_of_strings(commands);
 
 	return (0);
+
 }

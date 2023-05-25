@@ -55,6 +55,9 @@ typedef struct DynamicString
  * @current_process_id: represents the pid
  * @last_exit_code: represents the exit code.
  * @current_status_code: represents the exit code.
+ * @current_command: the current command.
+ * @command_count: the command count.
+ * @commands: the command.
  */
 typedef struct memory
 {
@@ -209,12 +212,19 @@ void handle_exit(struct memory *m);
 /* handles the environments */
 void handle_env(struct memory *m);
 
+
 /**_getline.c**/
 /* custom get_line function */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 /* copies the string into the buffer */
 size_t get(char *buf, char **lineptr, size_t *n, size_t buf_s, FILE *stream);
 
+
+/**multi_commands**/
+/* remove the leading space */
+void removeLeadingSpaces(char *str);
+/* execute the multi commands */
 int execute_multi_command(memory *m);
+
 #endif
 
