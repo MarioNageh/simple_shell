@@ -60,6 +60,7 @@ typedef struct memory
 {
 	char *command;
 	char *current_command;
+	int command_count;
 	char **agv;
 	char **commands;
 	int command_number;
